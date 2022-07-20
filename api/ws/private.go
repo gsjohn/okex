@@ -3,10 +3,10 @@ package ws
 import (
 	"encoding/json"
 
-	"github.com/amir-the-h/okex"
-	"github.com/amir-the-h/okex/events"
-	"github.com/amir-the-h/okex/events/private"
-	requests "github.com/amir-the-h/okex/requests/ws/private"
+	"github.com/gsjohn/okex"
+	"github.com/gsjohn/okex/events"
+	"github.com/gsjohn/okex/events/private"
+	requests "github.com/gsjohn/okex/requests/ws/private"
 )
 
 // Private

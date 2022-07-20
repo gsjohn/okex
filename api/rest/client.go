@@ -11,9 +11,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/amir-the-h/okex"
-	requests "github.com/amir-the-h/okex/requests/rest/public"
-	responses "github.com/amir-the-h/okex/responses/public_data"
+	"github.com/gsjohn/okex"
+	requests "github.com/gsjohn/okex/requests/rest/public"
+	responses "github.com/gsjohn/okex/responses/public_data"
 )
 
 // ClientRest is the rest api client
