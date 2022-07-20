@@ -7,12 +7,13 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"github.com/amir-the-h/okex"
-	requests "github.com/amir-the-h/okex/requests/rest/public"
-	responses "github.com/amir-the-h/okex/responses/public_data"
 	"net/http"
 	"strings"
 	"time"
+
+	"github.com/amir-the-h/okex"
+	requests "github.com/amir-the-h/okex/requests/rest/public"
+	responses "github.com/amir-the-h/okex/responses/public_data"
 )
 
 // ClientRest is the rest api client
@@ -97,6 +98,46 @@ func (c *ClientRest) Do(method, path string, private bool, params ...map[string]
 	}
 	if private {
 		timestamp, sign := c.sign(method, path, body)
+		r.Header.Add("OK-ACCESS-KEY", c.apiKey)
+		r.Header.Add("OK-ACCESS-PASSPHRASE", c.passphrase)
+		r.Header.Add("OK-ACCESS-SIGN", sign)
+		r.Header.Add("OK-ACCESS-TIMESTAMP", timestamp)
+	}
+	if c.destination == okex.DemoServer {
+		r.Header.Add("x-simulated-trading", "1")
+	}
+	return c.client.Do(r)
+}
+
+// Do the http request to the server
+func (c *ClientRest) DoPostList(path string, private bool, params ...map[string]string) (*http.Response, error) {
+	u := fmt.Sprintf("%s%s", c.baseURL, path)
+	var (
+		r    *http.Request
+		err  error
+		j    []byte
+		body string
+	)
+
+	j, err = json.Marshal(params)
+	if err != nil {
+		return nil, err
+	}
+	body = string(j)
+	if body == "{}" {
+		body = ""
+	}
+	r, err = http.NewRequest(http.MethodPost, u, bytes.NewBuffer(j))
+	if err != nil {
+		return nil, err
+	}
+	r.Header.Add("Content-Type", "application/json")
+
+	if err != nil {
+		return nil, err
+	}
+	if private {
+		timestamp, sign := c.sign(http.MethodPost, path, body)
 		r.Header.Add("OK-ACCESS-KEY", c.apiKey)
 		r.Header.Add("OK-ACCESS-PASSPHRASE", c.passphrase)
 		r.Header.Add("OK-ACCESS-SIGN", sign)
