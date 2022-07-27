@@ -41,6 +41,7 @@ type (
 		Ccy     string            `json:"ccy,omitempty"`
 		PosSide okex.PositionSide `json:"posSide,omitempty"`
 		MgnMode okex.MarginMode   `json:"mgnMode"`
+		AutoCxl bool              `json:"autoCxl"`
 	}
 	OrderDetails struct {
 		InstID  string `json:"instId"`
