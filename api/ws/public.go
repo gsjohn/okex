@@ -368,7 +368,7 @@ func (c *Public) UIndexTickers(req requests.IndexTickers, rCh ...bool) error {
 }
 
 func (c *Public) Process(data []byte, e *events.Basic) bool {
-	if e.Event == "" && e.Arg != nil && e.Data != nil && len(e.Data) > 0 {
+	if e != nil && e.Arg != nil && e.Data != nil && len(e.Data) > 0 {
 		ch, ok := e.Arg.Get("channel")
 		if !ok {
 			return false
