@@ -1,6 +1,6 @@
 // Package okex is generally a golang Api wrapper of Okex V5 API
 //
-// https://www.okex.com/docs-v5/en
+// https://www.okx.com/docs-v5/en
 package okex
 
 import (
@@ -58,6 +58,10 @@ type (
 )
 
 const (
+	NormalServer Destination = iota
+	AwsServer
+	DemoServer
+
 	RestURL      = BaseURL("https://www.okx.com")
 	PublicWsURL  = BaseURL("wss://ws.okx.com:8443/ws/v5/public")
 	PrivateWsURL = BaseURL("wss://ws.okx.com:8443/ws/v5/private")
@@ -69,10 +73,6 @@ const (
 	DemoRestURL      = BaseURL("https://www.okx.com")
 	DemoPublicWsURL  = BaseURL("wss://wspap.okx.com:8443/ws/v5/public?brokerId=9999")
 	DemoPrivateWsURL = BaseURL("wss://wspap.okx.com:8443/ws/v5/private?brokerId=9999")
-
-	NormalServer = Destination(iota + 1)
-	AwsServer    = NormalServer + 1
-	DemoServer   = AwsServer + 1
 
 	SpotInstrument    = InstrumentType("SPOT")
 	MarginInstrument  = InstrumentType("MARGIN")
@@ -299,7 +299,7 @@ const (
 	CandleStick1m  = CandleStickWsBarSize("candle1m")
 )
 
-func (t JSONTime) String() string { return time.Time(t).String() }
+func (t *JSONTime) String() string { return (time.Time)(*t).String() }
 
 func (t *JSONTime) UnmarshalJSON(s []byte) (err error) {
 	r := strings.Replace(string(s), `"`, ``, -1)

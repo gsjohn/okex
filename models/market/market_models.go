@@ -11,22 +11,22 @@ import (
 
 type (
 	Ticker struct {
-		InstID    string           `json:"instId"`
-		Last      okex.JSONFloat64 `json:"last"`
-		LastSz    okex.JSONFloat64 `json:"lastSz"`
-		AskPx     okex.JSONFloat64 `json:"askPx"`
-		AskSz     okex.JSONFloat64 `json:"askSz"`
-		BidPx     okex.JSONFloat64 `json:"bidPx"`
-		BidSz     okex.JSONFloat64 `json:"bidSz"`
-		Open24h   okex.JSONFloat64 `json:"open24h"`
-		High24h   okex.JSONFloat64 `json:"high24h"`
-		Low24h    okex.JSONFloat64 `json:"low24h"`
-		VolCcy24h okex.JSONFloat64 `json:"volCcy24h"`
-		Vol24h    okex.JSONFloat64 `json:"vol24h"`
-		SodUtc0   okex.JSONFloat64 `json:"sodUtc0"`
-		SodUtc8   okex.JSONFloat64 `json:"sodUtc8"`
-		InstType  string           `json:"instType"`
-		TS        okex.JSONTime    `json:"ts"`
+		InstID    string              `json:"instId"`
+		Last      okex.JSONFloat64    `json:"last"`
+		LastSz    okex.JSONFloat64    `json:"lastSz"`
+		AskPx     okex.JSONFloat64    `json:"askPx"`
+		AskSz     okex.JSONFloat64    `json:"askSz"`
+		BidPx     okex.JSONFloat64    `json:"bidPx"`
+		BidSz     okex.JSONFloat64    `json:"bidSz"`
+		Open24h   okex.JSONFloat64    `json:"open24h"`
+		High24h   okex.JSONFloat64    `json:"high24h"`
+		Low24h    okex.JSONFloat64    `json:"low24h"`
+		VolCcy24h okex.JSONFloat64    `json:"volCcy24h"`
+		Vol24h    okex.JSONFloat64    `json:"vol24h"`
+		SodUtc0   okex.JSONFloat64    `json:"sodUtc0"`
+		SodUtc8   okex.JSONFloat64    `json:"sodUtc8"`
+		InstType  okex.InstrumentType `json:"instType"`
+		TS        okex.JSONTime       `json:"ts"`
 	}
 	IndexTicker struct {
 		InstID  string           `json:"instId"`
@@ -46,7 +46,7 @@ type (
 	OrderBookWs struct {
 		Asks     []*OrderBookEntity `json:"asks"`
 		Bids     []*OrderBookEntity `json:"bids"`
-		Checksum int                `json:"checksum,string"`
+		Checksum int                `json:"checksum"`
 		TS       okex.JSONTime      `json:"ts"`
 	}
 	OrderBookEntity struct {
@@ -76,7 +76,7 @@ type (
 		TradeID okex.JSONFloat64 `json:"tradeId"`
 		Px      okex.JSONFloat64 `json:"px"`
 		Sz      okex.JSONFloat64 `json:"sz"`
-		Side    okex.TradeSide   `json:"side,string"`
+		Side    okex.TradeSide   `json:"side"`
 		TS      okex.JSONTime    `json:"ts"`
 	}
 	TotalVolume24H struct {

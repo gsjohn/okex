@@ -2,10 +2,105 @@ Changelog
 =========
 All notable changes to this project will be documented in this file.
 
+v1.1.5-alpha
+-------------
+
+### Changed
+
+- Fixed Trade model unmarshal
+
+
+v1.1.4-alpha
+-------------
+
+### Changed
+
+- Added buffer to `Ws` sender channel
+
+v1.1.3-alpha
+-------------
+
+### Changed
+
+- Fixed `Ws` lock issue
+
+v1.1.2-alpha
+-------------
+
+### Changed
+
+- Combined mutexes into one for `Ws` client
+
+v1.1.1-alpha
+-------------
+
+### Changed
+
+- Fixed all float64 that were mapped to int64
+- Changed destination constants values to start from iota
+
+v1.1.0-alpha
+-------------
+
+### Changed
+
+- Because versioning needs all the numbers!
+
+v1.1-alpha
+-------------
+
+### Changed
+
+- Because Golang checksum tool sometimes can not verify the version :)
+
+v1.0.35-alpha
+-------------
+
+### Changed
+
+- Fixed response struct unmarshalling issue
+
+v1.0.34-alpha
+-------------
+
+### Changed
+
+- Fixed response struct unmarshalling issue
+
+v1.0.33-alpha
+-------------
+
+### Changed
+
+- Added WS trade requests
+
+v1.0.32-alpha
+-------------
+
+### Changed
+
+- Fixed `OrderBookWs` struct `Checksum` field by removing string json tag
+- Added `InstID` to `OrderBook` event struct
+
+v1.0.31-alpha
+-------------
+
+### Changed
+
+- Migrated to `okx.com`
+
+v1.0.30-alpha
+-------------
+
+### Changed
+
+- Fixed `PlaceOrder` struct Sz field by changing it to float64
+- Added `UnmarshalJSON` to `Basic` response struct
+
 v1.0.29-alpha
 -------------
 
-### Chaned
+### Changed
 
 - Fixed websocket's client sender racing issue
 - Fixed websocket's public `UOrderBook` racing issue
@@ -15,7 +110,7 @@ v1.0.29-alpha
 v1.0.28-alpha
 -------------
 
-### Chaned
+### Changed
 
 - Fixed nil pointer reference bug on websocket connection
 
