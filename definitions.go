@@ -55,6 +55,7 @@ type (
 	JSONTime    time.Time
 
 	ClientError error
+	WalletType  string
 )
 
 const (
@@ -297,6 +298,9 @@ const (
 	CandleStick5m  = CandleStickWsBarSize("candle5m")
 	CandleStick3m  = CandleStickWsBarSize("candle3m")
 	CandleStick1m  = CandleStickWsBarSize("candle1m")
+
+	WalletTypeExchange = "exchange"
+	WalletTypePrivate  = "private"
 )
 
 func (t *JSONTime) String() string { return (time.Time)(*t).String() }

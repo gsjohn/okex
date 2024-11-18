@@ -33,15 +33,21 @@ type (
 		Limit  int64             `json:"limit,omitempty,string"`
 		State  okex.DepositState `json:"state,omitempty,string"`
 	}
-	Withdrawal struct {
-		Ccy    string                     `json:"ccy"`
-		Chain  string                     `json:"chain,omitempty"`
-		ToAddr string                     `json:"toAddr"`
-		Pwd    string                     `json:"pwd"`
-		Amt    float64                    `json:"amt,string"`
-		Fee    float64                    `json:"fee,string"`
-		Dest   okex.WithdrawalDestination `json:"dest,string"`
+
+	RcvrInfo struct {
+		WalletType okex.WalletType `json:"walletType,omitempty"`
 	}
+
+	Withdrawal struct {
+		Ccy      string                     `json:"ccy"`
+		Chain    string                     `json:"chain,omitempty"`
+		ToAddr   string                     `json:"toAddr"`
+		Amt      float64                    `json:"amt,string"`
+		Dest     okex.WithdrawalDestination `json:"dest,string"`
+		AreaCode string                     `json:"areaCode,omitempty"`
+		RcvrInfo RcvrInfo                   `json:"rcvrInfo,omitempty"`
+	}
+
 	GetWithdrawalHistory struct {
 		Ccy    string               `json:"ccy,omitempty"`
 		TxID   string               `json:"txId,omitempty"`
