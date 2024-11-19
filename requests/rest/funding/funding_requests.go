@@ -46,16 +46,19 @@ type (
 		Dest     okex.WithdrawalDestination `json:"dest,string"`
 		AreaCode string                     `json:"areaCode,omitempty"`
 		RcvrInfo RcvrInfo                   `json:"rcvrInfo,omitempty"`
+		ClientId string                     `json:"clientId,omitempty"`
 	}
 
 	GetWithdrawalHistory struct {
 		Ccy    string               `json:"ccy,omitempty"`
+		WdId   string               `json:"wdId,omitempty"`
 		TxID   string               `json:"txId,omitempty"`
 		After  int64                `json:"after,omitempty,string"`
 		Before int64                `json:"before,omitempty,string"`
 		Limit  int64                `json:"limit,omitempty,string"`
 		State  okex.WithdrawalState `json:"state,omitempty,string"`
 	}
+	
 	PiggyBankPurchaseRedemption struct {
 		Ccy    string               `json:"ccy,omitempty"`
 		TxID   string               `json:"txId,omitempty"`
